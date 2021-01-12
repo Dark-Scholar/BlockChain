@@ -42,3 +42,8 @@ must then push the new block onto the chain.
 ## Nonce
 
 Nonce stands for "number used only once". A nonce is a number (any number) which works as a mathematical proof that we have generated our block in a legitimate way by using a proof-of-work method.
+
+## Hashing
+
+In this project a SHA256 hashing algorithm is used.
+Hashing is the act of converiting a value to a compressed numerical value. Each hash in SHA256 is proven to be unique, therefore there is a unique representation of any possible value. It takes in data of arbitrary lengths and produces a fixed length hash value.

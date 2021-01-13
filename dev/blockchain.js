@@ -5,6 +5,9 @@
  * 
  * @author Luke McCann
  */
+
+ const sha256 = require('sha256');
+
 function Blockchain() {
     this.chain = []; 
     this.pendingTransactions = []; 
@@ -44,8 +47,9 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) 
     return this.getLastBlock()['index'] + 1;
 }
 
-Blockchain.prototype.hasBlock = function(blockData) {
-    
+Blockchain.prototype.hasBlock = function(previousBlockHash, currentBlockData, nonce) {
+    const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+    return sha256(dataAsString);
 }
 
 module.exports = Blockchain;

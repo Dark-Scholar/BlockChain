@@ -47,3 +47,7 @@ Nonce stands for "number used only once". A nonce is a number (any number) which
 
 In this project a SHA256 hashing algorithm is used.
 Hashing is the act of converiting a value to a compressed numerical value. Each hash in SHA256 is proven to be unique, therefore there is a unique representation of any possible value. It takes in data of arbitrary lengths and produces a fixed length hash value.
+
+In our hash method we take the previous blocks hash, the data for the current block, 
+and the nonce and stringify these items to pass in to the sha256 hash function. Since the previous hash is already a string, we only need to convert our integer nonce using toString()
+and our current block object, as an object this requires the use of JSON.stringify().

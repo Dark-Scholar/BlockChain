@@ -68,4 +68,6 @@ Essentially, in our proof of work we are repeatedly hashing our block until we f
 
 In this case an incremental method is used, in which everytime the hashBlock method is run the nonce is incremented. The first time running this method the initial nonce value will be zero. If that resulting hash does not contain the four leading values the hashBlock method is run with a nonce which has been incremented by one. This will run recursively until the hash value contains the 'n' leading zeros at the start of the hash. 
 
-This calculation utilises a lot of computing power, if the block is tampered with the future blocks will be compromised due to a change of the previous hash's value and need to also be re-mined. 
+This calculation utilises a lot of computing power, if the block is tampered with the future blocks will be compromised due to a change of the previous hash's value and need to also be re-mined.
+
+At the end of our proof of work we return our proof. This is the nonce which acts as a mathematical proof, this nonce represents the correct nonce which will generate the string with 'n' leading zeros when applied to the block provided.

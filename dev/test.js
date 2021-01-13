@@ -20,6 +20,6 @@ const currentBlockData = [
     }
 ];
 
-let result = bitcoin.proofOfWork(previousBlockHash, currentBlockData);
+let result = bitcoin.hashBlock(previousBlockHash, currentBlockData, 101467);
 
-console.log(result);
+console.log(result)

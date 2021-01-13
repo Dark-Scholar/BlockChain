@@ -47,7 +47,7 @@ Blockchain.prototype.createNewTransaction = function(amount, sender, recipient) 
     return this.getLastBlock()['index'] + 1;
 }
 
-Blockchain.prototype.hasBlock = function(previousBlockHash, currentBlockData, nonce) {
+Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, nonce) {
     const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
     return sha256(dataAsString);
 }
@@ -57,13 +57,11 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData)
     let hash = '';
 
     do {
-        hash = this.hasBlock(previousBlockHash, currentBlockData, nonce);
-        console.log(hash);
-        nonce++;
+        hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+        nonce++; 
     } while (hash.substr(0, 4) !== '0000');
 
     return nonce;
-
 }
 
 module.exports = Blockchain;

@@ -52,4 +52,8 @@ Blockchain.prototype.hasBlock = function(previousBlockHash, currentBlockData, no
     return sha256(dataAsString);
 }
 
+Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData) {
+
+}
+
 module.exports = Blockchain;

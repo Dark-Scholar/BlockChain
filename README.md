@@ -51,3 +51,21 @@ Hashing is the act of converiting a value to a compressed numerical value. Each 
 In our hash method we take the previous blocks hash, the data for the current block, 
 and the nonce and stringify these items to pass in to the sha256 hash function. Since the previous hash is already a string, we only need to convert our integer nonce using toString()
 and our current block object, as an object this requires the use of JSON.stringify().
+
+## Proof Of Work
+
+The proof of work method is essential to blockchain technology. It is one of the driving factors that result in tight security within blockchain applications such as bitcoin. A proof of work is essentially a method of validating blocks in the blockchain, ensuring the legitimacy of the block, including that it contains the correct transactions/data stored within. Without proof of work it would be possible to fake cryptocurrency amounts, and even change the content of a block, it would therefore no longer be immutable and have it's integrity easily breachable. Every block that is created must be validated as a legitimate block, this is done via mining it through the proof of work method. 
+
+### How Proof of Work... Works?
+
+This method takes in the current blocks data, and the hash of the previous block in the chain. From this provided data a specific hash is generated. This specific hash is a hash which begins with 'n' zeros, in this case it will be four leading zeros. 
+
+SHA256 hashes are pseudo-random, to generate a hash which begins with four zeros we run a trial and error calculation. In this, we run the hash block method many times, essentially conducting a brute force scenario, until we happen to generate a hash with the 'n' number of leading zeros.
+
+Since our hash is representing data, we must do this in such a way that we get our leading zeros, without compramising (changing) the data stored within the block, or the previous blocks hash. To do this, we constantly change the value of the passed in nonce. 
+
+Essentially, in our proof of work we are repeatedly hashing our block until we find the correct hash, this is any hash which begins with the 'n' leading zeros. We can do this by constantly changing the input to our hashBlock method, by constantly fluctuating or incrementing the nonce value. 
+
+In this case an incremental method is used, in which everytime the hashBlock method is run the nonce is incremented. The first time running this method the initial nonce value will be zero. If that resulting hash does not contain the four leading values the hashBlock method is run with a nonce which has been incremented by one. This will run recursively until the hash value contains the 'n' leading zeros at the start of the hash. 
+
+This calculation utilises a lot of computing power, if the block is tampered with the future blocks will be compromised due to a change of the previous hash's value and need to also be re-mined. 

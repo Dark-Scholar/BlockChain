@@ -13,6 +13,8 @@ class Blockchain {
     constructor() {
         this.chain = [];
         this.pendingTransactions = [];
+
+        this.genesisBlock = this.createNewBlock(50, '0', '0');
     }
 
     createNewBlock(nonce, previousBlockHash, hash) {
@@ -64,6 +66,10 @@ class Blockchain {
         } while (hash.substr(0, 4) !== '0000');
 
         return nonce;
+    }
+
+    getGenesisBlock() {
+        return this.genesisBlock;
     }
 }
 

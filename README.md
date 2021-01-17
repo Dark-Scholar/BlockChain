@@ -6,6 +6,18 @@ This project is currently a shell for creating a BlockChain. The BlockChain clas
 and can be played with by calling them from the test.js file. I plan to build this out into an API in the near future. 
 For now, please feel free to use this as a learning tool to understand the workings of BlockChain.
 
+## Versions
+
+There are two versions of this project. One using ES5 prototypes and another using ES6 classes.
+Both contain the exact same functionality and will be kept in this project to showcase the difference
+between class and prototypical syntax. These will be extracted into separate versioned projects upon completion.
+Feel free to use whichever suites your preference best, ES6 is often referred to as cleaner due to keeping
+all related functionality in a singular class. If you have come from an object oritented background, using a 
+language like C++, PHP, Java etc... you will probably be better suited to using ES6 syntax, but understand
+ES6 and ES5 both work the same under the hood, you can see this by inspecting the objects, a class simply
+creates objects and prototypes in the same way as the prototypical approach, it is effectively just a 
+"vanity" change, i.e. the only real difference is how the code looks.
+
 ## Author
 
 Luke McCann

@@ -1,5 +1,11 @@
 # Blockchain
 
+## Current State
+
+This project is currently a shell for creating a BlockChain. The BlockChain class and methods have been defined
+and can be played with by calling them from the test.js file. I plan to build this out into an API in the near future. 
+For now, please feel free to use this as a learning tool to understand the workings of BlockChain.
+
 ## Author
 
 Luke McCann

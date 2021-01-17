@@ -14,10 +14,10 @@ app.get('/blockchain', function (request, response) {
     response.send(bitcoin);
 });
 
-// Create a new transaction
 app.post('/transaction', function (request, response) {
     let body = request.body;
-    response.send(`You have sent ${body.amount} to address ${body.recipient}.`);
+    const blockIndex = bitcoin.createNewTransaction(body.amount, body.sender, body.recipient);
+    response.json({ note: `Transaction will be added in block ${blockIndex}.`});
 });
 
 // 'Mine" (create) the block

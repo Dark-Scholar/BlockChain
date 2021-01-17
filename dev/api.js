@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const Blockchain = require('./ES6/blockchain');
 const Block = require('./ES6/block');
 const bitcoin = new Blockchain();
+const { v1: uuidv1 } = require('uuid');
+
+const nodeAddress = uuidv1().split('-').join('');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,9 +23,25 @@ app.post('/transaction', function (request, response) {
     response.json({ note: `Transaction will be added in block ${blockIndex}.`});
 });
 
-// 'Mine" (create) the block
 app.get('/mine', function (request, response) {
+    const previousBlock = bitcoin.getLastBlock();
+    const previousBlockHash = previousBlock['hash'];
+    const currentBlockData = {
+        transactions: bitcoin.pendingTransactions, 
+        index: previousBlock['index'] + 1,
+    };
 
+    const nonce = bitcoin.proofOfWork(previousBlockHash, currentBlockData);
+    const blockHash = bitcoin.hashBlock(previousBlockHash, currentBlockData, nonce);
+
+    // Reward Miner
+    bitcoin.createNewTransaction(7, "00", nodeAddress);
+
+    const newBlock = bitcoin.createNewBlock(nonce, previousBlockHash, blockHash);
+    response.json({
+        note: "New block mined successfully!",
+        block: newBlock
+    })
 });
 
 app.listen(port, function () {

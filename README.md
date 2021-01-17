@@ -10,6 +10,8 @@
     - Node watcher
 - BodyParser
     - Body parsing middleware
+- Uuid/v1
+    - Random unique string generation
 
 These dependencies have been included with the package.json via the node package manager.
 Simply run npm install to acquire all dependencies.
@@ -200,6 +202,61 @@ You should expect the following JSON response providing the block index the tran
     }
 </pre>
 </code>
+
+## Mine Endpoint
+
+The mine endpoint deals with most of the heavy lifting for the API. The endpoint creates a new Block which then contains all of the transactions which were pending. 
+
+This occurs through attaining the hash of the previous block (i.e. currently the last block) in the chain.Once this hash is attained, the currentBlockData is retrieved as <code>transaction</code> and <code>index</code> wihtin it's own object. With this data a nonce is generated using the proofOfWork, passing in the previous blocks hash, the current block data. After this, the block is hashed using the acquired nonce, previous blocks hash, and current blocks data. a new transaction is then created rewarding the current mining node with currency. 
+
+You can call this endpoint via:
+
+<code>
+<pre>
+        http://localhost:3000/mine
+</pre>
+</code>
+
+You should expect a response as such:
+
+<code>
+<pre>
+    {
+        "note": "New block mined successfully!",
+        "block": {
+            "index": 3,
+            "timestamp": 1610927141972,
+            "transactions": [
+                {
+                    "amount": 10,
+                    "sender": "ANS7628DHSDFD",
+                    "recipient": "YUIO628DHSYDH"
+                },
+                {
+                    "amount": 13,
+                    "sender": "ANS7628DHSDFD",
+                    "recipient": "YUIO628DHSYDH"
+                },
+                {
+                    "amount": 7,
+                    "sender": "00",
+                    "recipient": "b07e8f60591d11eb832cd5b850c8a621"
+                }
+            ],
+            "nonce": 42073,
+            "hash": "00008a7884d41bd61e2846b9ee7edc3e9943712de3af280aa38696701ef62fc7",
+            "previousBlockHash": "0000b9135b054d1131392c9eb9d03b0111d4b516824a03c35639e12858912100"
+        }
+    }
+</pre>
+</code>
+
+
+### Api Notes
+
+A usual workflow of a blockchain would be that a Blockchain is instantiated. Transactions are then carried out accross the network, on multiple nodes, these transactions remain pending until a miner mines a block adding it to the chain. When this occurs a new transaction is created awarding the miner, and the other nodes transactions can be processed and are added into the mined block.
+
+If you are calling the endpoints bear this in mind as this is the intended order of execution.
 
 # Research Documentation
 

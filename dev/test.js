@@ -1,8 +1,6 @@
 const Blockchain = require('./blockchain');
 const bitcoin = new Blockchain();
 
-console.log(bitcoin);
-
 // Hash Tests 
 const previousBlockHash = '0ANDDDFHDJFSFLHKSFH';
 const currentBlockData = [

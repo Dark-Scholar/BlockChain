@@ -18,6 +18,10 @@ ES6 and ES5 both work the same under the hood, you can see this by inspecting th
 creates objects and prototypes in the same way as the prototypical approach, it is effectively just a 
 "vanity" change, i.e. the only real difference is how the code looks.
 
+I am aware this could be improved through the use of dependency injection. Coming from a C++/Java/PHP
+background I am not sure how this works in JS as of this moment, however, I will update
+the ES6 version with any improvements I learn in the future.
+
 ## Author
 
 Luke McCann

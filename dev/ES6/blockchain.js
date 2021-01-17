@@ -1,4 +1,5 @@
 const Block = require('./block');
+const Transaction = require('./transaction');
 
 /**
  * ES6 Blockchain
@@ -26,6 +27,13 @@ class Blockchain {
         this.addToChain(newBlock);
 
         return newBlock;
+    }
+
+    createNewTransaction(amount, sender, recipient) {
+        const newTransaction = new Transaction(amount, sender, recipient);
+        this.pendingTransactions.push(newTransaction);
+
+        return this.getLastBlock()['index'] + 1;
     }
 
     getLastBlock() {

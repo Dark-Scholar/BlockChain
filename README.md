@@ -2,12 +2,14 @@
 
 ## Dependencies
 
-- Express.js
+- Express
     - Routing framework
 - sha256
     - Encryption Algorithm
 - Nodemon
     - Node watcher
+- BodyParser
+    - Body parsing middleware
 
 These dependencies have been included with the package.json via the node package manager.
 Simply run npm install to acquire all dependencies.

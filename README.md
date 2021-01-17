@@ -84,8 +84,11 @@ to call the API endpoints, this will allow you to provide JSON data along with G
 ## Current State
 
 This project is currently a shell for creating a BlockChain. The BlockChain class and methods have been defined
-and can be played with by calling them from the test.js file. I plan to build this out into an API in the near future. 
-For now, please feel free to use this as a learning tool to understand the workings of BlockChain.
+and can be played with by calling them from the test.js file. 
+The basic API may be extended and rebuilt. Please see the notes
+on the usahe of the API.
+
+please feel free to use this as a learning tool to understand the workings of BlockChain.
 
 ## Versions
 
@@ -106,6 +109,99 @@ the ES6 version with any improvements I learn in the future.
 ## Author
 
 Luke McCann
+
+# Documentation
+
+## Blockchain API
+
+The API packaged in this project is built using node.js.
+
+To utilise the API you must first run the node server using <code>npms start</code>.
+
+There are several endpoints within the API, these endpoints can
+be called at will through port <code>3000</code> using the URL declared.
+
+### Blockchain Endpoint
+
+This endpoint expects a <code>get</code> request and returns the entire Blockchain object and it's contents. 
+
+The blockchain endpoint can be called as below: 
+
+<code>
+<pre>
+        http://localhost:3000/blockchain
+</pre>
+</code>
+
+The response returnd from the endpoint is in a readable JSON format. 
+If no transactions have yet occurred, nor any mining has been conducted,
+the only data contained within the Block is the Genesis block which is created
+upon Blockchain instatiation. This puts 50 coins into circulation, in a real
+use case a recipient and sender should be defined for this block. 
+
+You should expect the following JSON response:
+
+<code>
+<pre>
+    {
+        "chain": [
+            {
+                "index": 1,
+                "timestamp": 1610922490228,
+                "transactions": [],
+                "nonce": 50,
+                "hash": "0",
+                "previousBlockHash": "0"
+            }
+        ],
+        "pendingTransactions": [
+            {
+                "amount": 20,
+                "sender": "ANS7628DHSDFD",
+                "recipient": "YUIO628DHSYDH"
+            }
+        ]
+    }
+</pre>
+</code>
+
+## Transaction Endpoint
+
+This endpoint expects a <code>post</code> request along with the following body data:
+
+<code>
+<pre>
+    {
+        "amount": 20,
+        "sender": "ANS7628DHSDFD",
+        "recipient": "YUIO628DHSYDH"
+    }
+</pre>
+</code>
+
+The endpoint can be called with:
+
+<code>
+<pre>
+        http://localhost:3000/transaction
+</pre>
+</code>
+
+Any transaction created will be placed into the PendingTransactions,
+in which they will remain until a new block is mined and added to the chain. 
+At which point all pending transactions will be processed and added to that block in the chain. 
+
+You should expect the following JSON response providing the block index the transaction has been added to:
+
+<code>
+<pre>
+    {
+        "note": "Transaction will be added in block 2."
+    }
+</pre>
+</code>
+
+# Research Documentation
 
 ## What is a Blockchain?
 

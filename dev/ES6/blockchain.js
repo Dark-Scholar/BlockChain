@@ -23,13 +23,21 @@ class Blockchain {
         );
 
         this.clearPendingTransactions();
-        this.chain.push(newBlock);
+        this.addToChain(newBlock);
 
         return newBlock;
     }
 
+    getLastBlock() {
+        return this.chain[this.chain.length - 1];
+    }
+
     clearPendingTransactions() {
         this.pendingTransactions = [];
+    }
+
+    addToChain(block) {
+        this.chain.push(block);
     }
 }
 

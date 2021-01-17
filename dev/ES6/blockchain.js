@@ -14,7 +14,7 @@ class Blockchain {
         this.chain = [];
         this.pendingTransactions = [];
 
-        this.genesisBlock = this.createNewBlock(50, '0', '0');
+        this.createNewBlock(50, '0', '0');
     }
 
     createNewBlock(nonce, previousBlockHash, hash) {
@@ -69,7 +69,7 @@ class Blockchain {
     }
 
     getGenesisBlock() {
-        return this.genesisBlock;
+        return this.chain[0];
     }
 }
 

@@ -12,6 +12,16 @@
 These dependencies have been included with the package.json via the node package manager.
 Simply run npm install to acquire all dependencies.
 
+## Nodemon
+
+<code>
+<pre>
+    nodemon --watch dev -e js dev/api.js
+</pre>
+</code>
+
+This command runs athe watch command, telling node to begin watching when the start command is ran. The second argument is the folder to be watched, in this case <code>"dev"</code> kepeing watch of the third argument filetype/extension i.e. <code>.js</code> . The final argument is the script to run if any changes occur in the js files.
+
 ## Running The Application
 
 To run the application first clone this repository:

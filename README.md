@@ -1,5 +1,74 @@
 # Blockchain
 
+## Dependencies
+
+- Express.js
+    - Routing framework
+- sha256
+    - Encryption Algorithm
+- Nodemon
+    - Node watcher
+
+These dependencies have been included with the package.json via the node package manager.
+Simply run npm install to acquire all dependencies.
+
+## Running The Application
+
+To run the application first clone this repository:
+<code>
+<pre>
+        git clone {repo}
+</pre>
+</code>
+
+Then install dependencies via the node package manager. (for an introduction to installing npm on your local machine see the NPM docs, [here](https://www.npmjs.com/get-npm)) :
+
+<code>
+<pre>
+        npm install
+</pre>
+</code>
+
+Finally, open up a terminal and run: 
+
+<code>
+<pre>
+        npm start
+</pre>
+</code>
+
+This will start a node server on your local machine listening on port: <code>3000</code> by default. Nodemon will automatically restart the server
+whenever changes are made to files within the dev directory. 
+
+You can now interact with this API by visiting your localhost URL in the browser
+and making a request to any of the endpoints defined in <code>api.js</code>
+
+Example Routes:
+
+- Get entire blockchain
+<code>
+<pre>
+    http://localhost:3000/blockchain
+</pre>
+</code>
+
+- Make a new transaction
+<code>
+<pre>
+    http://localhost:3000/transaction
+</pre>
+</code>
+
+- Mine a new block
+<code>
+<pre>
+    http://localhost:3000/mine
+</pre>
+</code>
+
+Please note, it is recommended to use a tool such as [Postman](https://www.postman.com/downloads/)
+to call the API endpoints, this will allow you to provide JSON data along with GET/POST headers to invoke the different interactions within the API.
+
 ## Current State
 
 This project is currently a shell for creating a BlockChain. The BlockChain class and methods have been defined

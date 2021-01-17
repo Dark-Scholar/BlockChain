@@ -8,4 +8,26 @@ const lastBlock = bitcoin.getLastBlock();
 const transaction1 = bitcoin.createNewTransaction(200, 'MARKASJFJSDAHF', 'BILLDFJIASDFHJ');
 const block3 = bitcoin.createNewBlock(3214, 'MARKASJFJSDAHF', 'BILLDFJIASDFHJ');
 
-console.log(bitcoin);
+// Hash Testing
+const previousBlockHash = '0ANDDDFHDJFSFLHKSFH';
+const currentBlockData = [
+    {
+        amount: 1235,
+        sender: 'N9DSAFDGJSGNDSFG',
+        recipient: 'KFNSKDHGSFHGSJFDHG',
+    },
+    {
+        amount: 23,
+        sender: '9SAFFDSKGFHGKGGFDS',
+        recipient: 'FSJFGJFSGJDFGJ8',
+    },
+    {
+        amount: 75,
+        sender: 'JJFJDSFJKGS8888',
+        recipient: 'FDNSKFSDGSJHG8',
+    }
+];
+
+const hash = bitcoin.hashBlock(previousBlockHash, currentBlockData, 1324);
+
+console.log(hash);

@@ -1,5 +1,6 @@
 const Block = require('./block');
 const Transaction = require('./transaction');
+const sha256 = require('sha256');
 
 /**
  * ES6 Blockchain
@@ -46,6 +47,11 @@ class Blockchain {
 
     addToChain(block) {
         this.chain.push(block);
+    }
+
+    hashBlock(previousBlockHash, currentBlockData, nonce) {
+        const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+        return sha256(dataAsString);
     }
 }
 

@@ -21,7 +21,7 @@ class Blockchain {
             this.pendingTransactions,
             nonce,
             previousBlockHash,
-            hash
+            hash,
         );
 
         this.clearPendingTransactions();
@@ -52,6 +52,18 @@ class Blockchain {
     hashBlock(previousBlockHash, currentBlockData, nonce) {
         const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
         return sha256(dataAsString);
+    }
+
+    proofOfWork(previousBlockHash, currentBlockData) {
+        let nonce = -1;
+        let hash = '';
+
+        do {
+            nonce++;
+            hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+        } while (hash.substr(0, 4) !== '0000');
+
+        return nonce;
     }
 }
 

@@ -55,13 +55,13 @@ Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlockData, n
     return sha256(dataAsString);
 }
 
-Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData) {
+Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData) {
     let nonce = 0;
     let hash = '';
 
     do {
-        hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
         nonce++; 
+        hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
     } while (hash.substr(0, 4) !== '0000');
 
     return nonce;
